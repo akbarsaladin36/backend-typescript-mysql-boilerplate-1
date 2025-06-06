@@ -1,5 +1,5 @@
 import bcryptjs from 'bcryptjs'
-import { Response } from 'express'
+import { Request, Response } from 'express'
 import { v4 } from 'uuid'
 
 const Helper = {
@@ -19,6 +19,9 @@ const Helper = {
         const uuid = v4()
         const uuidWithoutHypens = uuid.replace(/-/g, '');
         return uuidWithoutHypens
+    },
+    CurrentUser(req: Request) {
+        return (req as any).currentUser
     }
 }
 
