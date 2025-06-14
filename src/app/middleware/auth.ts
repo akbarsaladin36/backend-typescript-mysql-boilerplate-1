@@ -19,6 +19,16 @@ const AuthMiddleware = {
         } else {
             return Helper.GetResponse(res, 403, 'Please login to website first!', null)
         }
+    },
+    userCheckRole(role: string): any {
+        return (req: Request, res: Response, next: NextFunction) => {
+            const currentUser = Helper.CurrentUser(req)
+            if(role == currentUser.role) {
+                next()
+            } else {
+                return Helper.GetResponse(res, 403, `This api can be accessed by ${role} role`, null)
+            }
+        }
     }
 }
 

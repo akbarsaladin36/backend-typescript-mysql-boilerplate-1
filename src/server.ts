@@ -11,6 +11,7 @@ dotenv.config()
 
 const app = express()
 const port = process.env.SERVER_PORT
+const base_url = process.env.BASE_URL
 
 app.use(morgan('dev'))
 app.use(cors())
@@ -22,6 +23,8 @@ app.use('/backend14/api/v1', routesNavigation)
 
 app.listen(port, () => {
     console.log(`✅ Server is running on port ${port}`)
+    console.log(`✅ You can test api with url: ${base_url}`)
+
 })
 
 
